@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0d9e468a71d44f5fbcea36265689ba7e" Name="Diagram1">
+        <EntityTypeShape EntityType="BiitDBNewModel.Accgpa" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.ALLOCATE" Width="1.5" PointX="8.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.Applicant" Width="1.5" PointX="8.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.Crsdtl" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.CRSMTR" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.CrsmtrShort" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.EMPMTR" Width="1.5" PointX="2.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.Question" Width="1.5" PointX="8.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.SEMMTR" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.STMTR" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiitDBNewModel.Log_In" Width="1.5" PointX="10.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="BiitDBNewModel.fk_semno1" ManuallyRouted="false" />
+        <AssociationConnector Association="BiitDBNewModel.fk1_reg_no" ManuallyRouted="false" />
+        <AssociationConnector Association="BiitDBNewModel.fk_CRSDIS" ManuallyRouted="false" />
+        <AssociationConnector Association="BiitDBNewModel.fk_reg" ManuallyRouted="false" />
+        <AssociationConnector Association="BiitDBNewModel.fk_semno" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BiitDBNewModel.Eval" Width="1.5" PointX="11" PointY="1.5" />
+        <AssociationConnector Association="BiitDBNewModel.FK_Eval_Question_Answer" />
+        <EntityTypeShape EntityType="BiitDBNewModel.Templeate" Width="1.5" PointX="5.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

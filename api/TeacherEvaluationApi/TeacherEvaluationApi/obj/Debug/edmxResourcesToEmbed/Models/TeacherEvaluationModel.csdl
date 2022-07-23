@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BiitDBNewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Accgpa">
+    <Key>
+      <PropertyRef Name="REG_NO" />
+      <PropertyRef Name="SEMESTER_NO" />
+      <PropertyRef Name="SECTION" />
+    </Key>
+    <Property Name="REG_NO" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SEMESTER_NO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CHAR_WORK" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="SYN_INT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Q_PREV" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Q_CURR_SEM" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Q_TOTAL" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="CR_PREV" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="CR_CURR_SEM" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="CR_TOTAL" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="CGPA" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="USER_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SECTION" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SEM_STATUS" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="SemC" Type="Int32" />
+    <Property Name="dropCount" Type="Int32" />
+    <NavigationProperty Name="SEMMTR" Relationship="Self.fk_semno1" FromRole="Accgpa" ToRole="SEMMTR" />
+    <NavigationProperty Name="STMTR" Relationship="Self.fk1_reg_no" FromRole="Accgpa" ToRole="STMTR" />
+  </EntityType>
+  <EntityType Name="ALLOCATE">
+    <Key>
+      <PropertyRef Name="EMP_NO" />
+      <PropertyRef Name="COURSE_NO" />
+      <PropertyRef Name="SEMESTER_NO" />
+      <PropertyRef Name="SECTION" />
+      <PropertyRef Name="DISCIPLINE" />
+      <PropertyRef Name="SOS" />
+      <PropertyRef Name="SemC" />
+    </Key>
+    <Property Name="EMP_NO" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="COURSE_NO" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SEMESTER_NO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SECTION" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DISCIPLINE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SOS" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="LEC1_DT" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="LEC2_DT" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="LEC3_DT" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="SemC" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Applicant">
+    <Key>
+      <PropertyRef Name="App_no" />
+    </Key>
+    <Property Name="App_no" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Reg_no" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="St_firstname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="St_lastname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="St_middlename" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Father_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="St_email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Uaar_reg_no" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Marital_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Birth_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Nic_no" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Pr_address" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Pr_city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Per_address" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Per_city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Em_telno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Per_telno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Ad_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Sess" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Pref_1" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Pref_2" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Adm_date" Type="DateTime" Precision="3" />
+    <Property Name="Semester_no" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="St_status" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Acc_status" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+    <Property Name="St_assets" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Whom_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fin_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Final_course" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Enrl_status" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="DOMICILE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="SOS" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Section" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Crsdtl">
+    <Key>
+      <PropertyRef Name="Course_no" />
+      <PropertyRef Name="REG_NO" />
+      <PropertyRef Name="SEMESTER_NO" />
+    </Key>
+    <Property Name="Course_no" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ATTEMPT_NO" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="REG_NO" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Emp_no" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SEMESTER_NO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SECTION" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Final_score" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Midterm_score" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Assi_score" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Prac_score" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="Grade" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Q_points" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="DISCIPLINE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SOS" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="pGrade" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Mid_att" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Fin_att" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CrsSemNo" Type="Int32" />
+    <Property Name="DT" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CRSMTR" Relationship="Self.fk_CRSDIS" FromRole="Crsdtl" ToRole="CRSMTR" />
+    <NavigationProperty Name="STMTR" Relationship="Self.fk_reg" FromRole="Crsdtl" ToRole="STMTR" />
+    <NavigationProperty Name="SEMMTR" Relationship="Self.fk_semno" FromRole="Crsdtl" ToRole="SEMMTR" />
+  </EntityType>
+  <EntityType Name="CRSMTR">
+    <Key>
+      <PropertyRef Name="Course_no" />
+      <PropertyRef Name="Discipline" />
+      <PropertyRef Name="SOS" />
+    </Key>
+    <Property Name="Course_no" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Discipline" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Course_desc" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Credit_hrs" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Course_type" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="SOS" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SOS_DESC" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ELective_course" Type="Int32" />
+    <Property Name="Old_SOS" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Crsdtls" Relationship="Self.fk_CRSDIS" FromRole="CRSMTR" ToRole="Crsdtl" />
+  </EntityType>
+  <EntityType Name="CrsmtrShort">
+    <Key>
+      <PropertyRef Name="Course_No" />
+    </Key>
+    <Property Name="Course_No" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Course_Desc" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="EMPMTR">
+    <Key>
+      <PropertyRef Name="Emp_no" />
+    </Key>
+    <Property Name="Emp_no" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Emp_firstname" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_lastname" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_middle" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Dsgn_no" Type="String" MaxLength="55" FixedLength="true" Unicode="false" />
+    <Property Name="Per_address" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Per_city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Pr_address" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Pr_city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Res_telno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Joining_date" Type="DateTime" Precision="3" />
+    <Property Name="Resign_date" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="NIC" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="Question_ID" />
+    </Key>
+    <Property Name="Question_ID" Type="Int32" Nullable="false" />
+    <Property Name="Question1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Evals" Relationship="BiitDBNewModel.FK_Eval_Question_Answer" FromRole="Question" ToRole="Eval" />
+  </EntityType>
+  <EntityType Name="SEMMTR">
+    <Key>
+      <PropertyRef Name="Semester_no" />
+    </Key>
+    <Property Name="Semester_no" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Semester_desc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Start_date" Type="DateTime" Precision="3" />
+    <Property Name="End_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Accgpas" Relationship="Self.fk_semno1" FromRole="SEMMTR" ToRole="Accgpa" />
+    <NavigationProperty Name="Crsdtls" Relationship="Self.fk_semno" FromRole="SEMMTR" ToRole="Crsdtl" />
+  </EntityType>
+  <EntityType Name="STMTR">
+    <Key>
+      <PropertyRef Name="Reg_No" />
+    </Key>
+    <Property Name="Reg_No" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="App_no" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="St_firstname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="St_lastname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="St_middlename" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Father_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="St_email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Uaar_reg_no" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Marital_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Birth_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Nic_no" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Pr_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Pr_city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Per_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Per_city" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Em_telno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Per_telno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Ad_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Sess" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Pref_1" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Pref_2" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Adm_date" Type="DateTime" Precision="3" />
+    <Property Name="Semester_no" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="St_status" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Acc_status" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+    <Property Name="St_assets" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Whom_STATUS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fin_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Final_course" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Enrl_status" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="DOMICILE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Degree_Received" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="Deg_No" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+    <Property Name="Year" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="SOS" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Section" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Accgpas" Relationship="Self.fk1_reg_no" FromRole="STMTR" ToRole="Accgpa" />
+    <NavigationProperty Name="Crsdtls" Relationship="Self.fk_reg" FromRole="STMTR" ToRole="Crsdtl" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Log_In">
+    <Key>
+      <PropertyRef Name="User_name" />
+      <PropertyRef Name="User_id" />
+      <PropertyRef Name="User_type" />
+      <PropertyRef Name="User_password" />
+    </Key>
+    <Property Name="User_name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="User_id" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="User_type" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="User_password" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MAC" Type="String" MaxLength="17" FixedLength="true" Unicode="true" />
+    <Property Name="VID" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="att" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <Association Name="fk_semno1">
+    <End Role="SEMMTR" Type="Self.SEMMTR" Multiplicity="1" />
+    <End Role="Accgpa" Type="Self.Accgpa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEMMTR">
+        <PropertyRef Name="Semester_no" />
+      </Principal>
+      <Dependent Role="Accgpa">
+        <PropertyRef Name="SEMESTER_NO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk1_reg_no">
+    <End Role="STMTR" Type="Self.STMTR" Multiplicity="1" />
+    <End Role="Accgpa" Type="Self.Accgpa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STMTR">
+        <PropertyRef Name="Reg_No" />
+      </Principal>
+      <Dependent Role="Accgpa">
+        <PropertyRef Name="REG_NO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CRSDIS">
+    <End Role="CRSMTR" Type="Self.CRSMTR" Multiplicity="1" />
+    <End Role="Crsdtl" Type="Self.Crsdtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CRSMTR">
+        <PropertyRef Name="Course_no" />
+        <PropertyRef Name="Discipline" />
+        <PropertyRef Name="SOS" />
+      </Principal>
+      <Dependent Role="Crsdtl">
+        <PropertyRef Name="Course_no" />
+        <PropertyRef Name="DISCIPLINE" />
+        <PropertyRef Name="SOS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_reg">
+    <End Role="STMTR" Type="Self.STMTR" Multiplicity="1" />
+    <End Role="Crsdtl" Type="Self.Crsdtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STMTR">
+        <PropertyRef Name="Reg_No" />
+      </Principal>
+      <Dependent Role="Crsdtl">
+        <PropertyRef Name="REG_NO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_semno">
+    <End Role="SEMMTR" Type="Self.SEMMTR" Multiplicity="1" />
+    <End Role="Crsdtl" Type="Self.Crsdtl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEMMTR">
+        <PropertyRef Name="Semester_no" />
+      </Principal>
+      <Dependent Role="Crsdtl">
+        <PropertyRef Name="SEMESTER_NO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BiitDBNewEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accgpas" EntityType="Self.Accgpa" />
+    <EntitySet Name="ALLOCATEs" EntityType="Self.ALLOCATE" />
+    <EntitySet Name="Applicants" EntityType="Self.Applicant" />
+    <EntitySet Name="Crsdtls" EntityType="Self.Crsdtl" />
+    <EntitySet Name="CRSMTRs" EntityType="Self.CRSMTR" />
+    <EntitySet Name="CrsmtrShorts" EntityType="Self.CrsmtrShort" />
+    <EntitySet Name="EMPMTRs" EntityType="Self.EMPMTR" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="SEMMTRs" EntityType="Self.SEMMTR" />
+    <EntitySet Name="STMTRs" EntityType="Self.STMTR" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Log_In" EntityType="Self.Log_In" />
+    <AssociationSet Name="fk_semno1" Association="Self.fk_semno1">
+      <End Role="SEMMTR" EntitySet="SEMMTRs" />
+      <End Role="Accgpa" EntitySet="Accgpas" />
+    </AssociationSet>
+    <AssociationSet Name="fk1_reg_no" Association="Self.fk1_reg_no">
+      <End Role="STMTR" EntitySet="STMTRs" />
+      <End Role="Accgpa" EntitySet="Accgpas" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CRSDIS" Association="Self.fk_CRSDIS">
+      <End Role="CRSMTR" EntitySet="CRSMTRs" />
+      <End Role="Crsdtl" EntitySet="Crsdtls" />
+    </AssociationSet>
+    <AssociationSet Name="fk_reg" Association="Self.fk_reg">
+      <End Role="STMTR" EntitySet="STMTRs" />
+      <End Role="Crsdtl" EntitySet="Crsdtls" />
+    </AssociationSet>
+    <AssociationSet Name="fk_semno" Association="Self.fk_semno">
+      <End Role="SEMMTR" EntitySet="SEMMTRs" />
+      <End Role="Crsdtl" EntitySet="Crsdtls" />
+    </AssociationSet>
+    <EntitySet Name="Evals" EntityType="BiitDBNewModel.Eval" />
+    <AssociationSet Name="FK_Eval_Question_Answer" Association="BiitDBNewModel.FK_Eval_Question_Answer">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Eval" EntitySet="Evals" />
+    </AssociationSet>
+    <EntitySet Name="Templeates" EntityType="BiitDBNewModel.Templeate" />
+  </EntityContainer>
+  <EntityType Name="Eval">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_no" Type="String" Nullable="false" MaxLength="7" FixedLength="true" Unicode="false" />
+    <Property Name="Reg_No" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Course_no" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="Discipline" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Semester_no" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Question_Desc" Type="Int32" Nullable="false" />
+    <Property Name="Answer_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Answer_Marks" Type="Int32" />
+    <NavigationProperty Name="Question" Relationship="BiitDBNewModel.FK_Eval_Question_Answer" FromRole="Eval" ToRole="Question" />
+  </EntityType>
+  <Association Name="FK_Eval_Question_Answer">
+    <End Type="BiitDBNewModel.Question" Role="Question" Multiplicity="1" />
+    <End Type="BiitDBNewModel.Eval" Role="Eval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="Question_ID" />
+      </Principal>
+      <Dependent Role="Eval">
+        <PropertyRef Name="Question_Desc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Templeate">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Semester" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
