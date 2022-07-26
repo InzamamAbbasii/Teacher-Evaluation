@@ -7,7 +7,6 @@ import {
   Alert,
   FlatList,
 } from 'react-native';
-import {Table, TableWrapper, Row, Cell} from 'react-native-table-component';
 
 const StudentCourses = ({route, navigation}) => {
   const [courses, setCourses] = useState([]);
@@ -21,7 +20,6 @@ const StudentCourses = ({route, navigation}) => {
   }, [navigation]);
 
   const getCourses = () => {
-    // var URL = `http://${ip}/TeacherEvaluationApi/api/Student/getCurrentSemesterCources2?regno=${route.params.Reg_No}`;
     var URL = `http://${ip}/TeacherEvaluationApi/api/student/GetCourses/${route.params.Reg_No}/2021FM`;
     fetch(URL, {
       method: 'GET',
@@ -29,8 +27,6 @@ const StudentCourses = ({route, navigation}) => {
       .then(response => response.json())
       .then(response => {
         if (response.length > 0) {
-          console.log(response);
-          // setCourses(response);
           response.forEach(element => {
             var URL1 = `http://${ip}/TeacherEvaluationApi/api/Student/getteacherbycourse?empno=${element.Emp_no}`;
             fetch(URL1, {
@@ -125,7 +121,6 @@ const StudentCourses = ({route, navigation}) => {
               </Text>
               {item.Eval_Status ? (
                 <TouchableOpacity
-                  // disabled={true}
                   onPress={() =>
                     navigation.navigate('StudentEvaluation', {
                       Emp_No: item.Emp_no,
@@ -170,7 +165,6 @@ const StudentCourses = ({route, navigation}) => {
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: '#fff'},
   head: {
-    // minHeight: 40,
     backgroundColor: 'pink',
   },
   text: {margin: 6},

@@ -73,8 +73,6 @@ const AddTempleate = () => {
     } else {
       alert('You are not allowed to add more questions.');
     }
-    // setCopy(newData);
-    // console.log(newData);
   };
 
   const handleAdd = () => {
@@ -166,9 +164,6 @@ const AddTempleate = () => {
         saveListQuestion(filteredData);
         addSingleQuestion();
       }
-
-      // setManualQuestionList([]);
-      // setQuestionList([]);
     }
   };
   return (

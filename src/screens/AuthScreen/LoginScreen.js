@@ -67,7 +67,6 @@ const LoginScreen = ({navigation}) => {
       .finally(() => setloading(false));
   };
   const handleLogin = () => {
-    console.log(name, password, selectedAccountType);
     if (name.length == 0 || password.length == 0) {
       alert('Please Enter Your Credentials!');
     } else {
@@ -151,13 +150,11 @@ const LoginScreen = ({navigation}) => {
           </Picker>
         </View>
 
-        {/* <View style={styles.textInput}> */}
         <TouchableOpacity style={styles.btnLogin} onPress={() => handleLogin()}>
           <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>
             Login
           </Text>
         </TouchableOpacity>
-        {/* </View> */}
       </View>
     </View>
   );

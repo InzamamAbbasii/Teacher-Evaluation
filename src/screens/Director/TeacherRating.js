@@ -18,20 +18,10 @@ const TeacherRating = () => {
     })
       .then(response => response.json())
       .then(response => {
-        // console.log(response);
         setQuestionsList(response);
-        // response.forEach(element => {
-        //   setQuestionsList(data => [
-        //     ...data,
-        //     {
-        //       Qid: element.Question_ID,
-        //       Question: element.Question1,
-        //     },
-        //   ]);
-        // });
       })
       .catch(error => {
-        alertg(error);
+        alert(error);
       });
   };
   const getRating = () => {
@@ -46,7 +36,6 @@ const TeacherRating = () => {
         } else throw 'Something went wrong';
       })
       .then(response => {
-        console.log('response', response);
         if (response.length == 0) alert('No Result Found');
         else setData(response);
       })
@@ -84,7 +73,6 @@ const TeacherRating = () => {
             onValueChange={(itemValue, itemIndex) =>
               setSelectedQuestion(itemValue)
             }>
-            {/* <Picker.Item label="Student" value="student" /> */}
             {questionsList.map((item, key) => {
               return (
                 <Picker.Item

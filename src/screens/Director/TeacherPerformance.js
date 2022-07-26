@@ -95,7 +95,6 @@ const TeacherPerformance = ({navigation}) => {
           Semester_no: item.Semester,
         };
       });
-      // setLoading(true);
       setPerformanceBase([]);
       let teachers = newData.map(item => item.Emp_no);
       let courses = newData.map(item => item.Course_no);
@@ -103,8 +102,6 @@ const TeacherPerformance = ({navigation}) => {
       let uniqueTeacher = [...new Set(teachers)];
       let uniqueCourses = [...new Set(courses)];
       let uniqueSemester = [...new Set(semester)];
-      console.log(uniqueTeacher, uniqueCourses, uniqueSemester);
-
       if (uniqueTeacher.length > 1) {
         uniqueTeacher.forEach(element => {
           setPerformanceBase(data => [...data, getTeacherNameById(element)]);
@@ -137,7 +134,6 @@ const TeacherPerformance = ({navigation}) => {
           } else throw 'Something went wrong';
         })
         .then(response => {
-          // console.log('response', response);
           let notFound = false;
           response.forEach((element, i) => {
             console.log(i, element.length);
@@ -152,7 +148,6 @@ const TeacherPerformance = ({navigation}) => {
               arr = [];
               series_name = series_name + i;
               item.forEach(element => {
-                // arr.push(element.AverageMarks);
                 arr.push({x: element.Question_Desc, y: element.AverageMarks});
               });
               if (arr.length > 0) {
@@ -202,7 +197,6 @@ const TeacherPerformance = ({navigation}) => {
           setCoursesList(data => [
             ...data,
             {
-              // lable: element.Course_Desc,
               lable: element.Title,
               value: element.Course_No,
             },
@@ -225,13 +219,6 @@ const TeacherPerformance = ({navigation}) => {
   };
   const addMore = () => {
     setValueArray(data => [...data, index]);
-    console.log(
-      index,
-      getSelectedValue(index, 'Teacher'),
-      getSelectedValue(index, 'Course'),
-      getSelectedValue(index, 'Semester'),
-    );
-    console.log(selectedValueArray[selectedValueArray.length - 1]);
     let teacher =
       getSelectedValue(index, 'Teacher') == null
         ? teachersList[0].value
@@ -250,12 +237,6 @@ const TeacherPerformance = ({navigation}) => {
       Semester: semester,
       Teacher: teacher,
     };
-    // let obj = {
-    //   Course: coursesList[0].value,
-    //   Index: index + 1,
-    //   Semester: semesterList[0].value,
-    //   Teacher: teachersList[0].value,
-    // };
     setSelectedValueArray(data => [...data, obj]); // add new object in array
     setIndex(index + 1);
   };
@@ -263,7 +244,6 @@ const TeacherPerformance = ({navigation}) => {
     setValueArray(valueArray.slice(0, -1));
     setIndex(index - 1);
     selectedValueArray.pop(); //remove value from array
-    // setPerfomanceData([]);
   };
   const getSelectedValue = (key, name) => {
     let selectedItem = selectedValueArray.find(element => element.Index == key);
