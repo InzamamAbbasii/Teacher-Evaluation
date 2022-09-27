@@ -39,5 +39,6 @@ namespace TeacherEvaluationApi.Models
         public virtual DbSet<Log_In> Log_In { get; set; }
         public virtual DbSet<Eval> Evals { get; set; }
         public virtual DbSet<Templeate> Templeates { get; set; }
+        public virtual DbSet<TemplateGraph> TemplateGraphs { get; set; }
     }
 }

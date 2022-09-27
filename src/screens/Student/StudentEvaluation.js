@@ -22,7 +22,6 @@ const StudentEvaluation = ({navigation, route}) => {
   const [copy, setCopy] = useState([]);
   const [isFetched, setIsFetched] = useState(true);
   var radio_props = [
-    //radio button
     {label: 'Excellent ', value: 'Excellent'},
     {label: 'Good', value: 'Good'},
     {label: 'Average', value: 'Average'},
@@ -107,7 +106,6 @@ const StudentEvaluation = ({navigation, route}) => {
           Answer_Marks: ans_marks,
         };
       });
-      console.log(newData);
       var headers = {
         'Content-Type': 'application/json',
       };

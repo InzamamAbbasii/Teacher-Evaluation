@@ -39,7 +39,8 @@ const LoginScreen = ({navigation}) => {
         ) {
           navigation.navigate('TeacherPerformance', response);
         } else {
-          navigation.navigate('AddTempleate', response);
+          // navigation.navigate('AddTempleate', response);
+          navigation.navigate('Dashboard', response);
         }
       })
       .catch(error => {

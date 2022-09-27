@@ -25,9 +25,11 @@ const AddTempleate = () => {
     setManualQuestionList([]);
     setQuestionList([]);
     getQuestions();
+    console.log('useeffect.......');
   }, []);
 
   const getQuestions = () => {
+    console.log('called....');
     setIsLoading(true);
     var InsertApiURL = `http://${ip}/TeacherEvaluationApi/api/Student/GetQuestions`;
     fetch(InsertApiURL, {
@@ -48,7 +50,7 @@ const AddTempleate = () => {
         });
       })
       .catch(error => {
-        console.log(error);
+        console.log('error:::::', error);
       })
       .finally(() => setIsLoading(false));
   };
@@ -219,7 +221,7 @@ const AddTempleate = () => {
                         onChangeValue(item.item.Qid, item.item.Selected)
                       }
                       checkedCheckBoxColor={'#000'}
-                      uncheckedCheckBoxColor={'#fff'}
+                      uncheckedCheckBoxColor={'#000'}
                       isChecked={item.item.Selected}
                     />
                   </View>

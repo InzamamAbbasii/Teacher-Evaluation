@@ -356,6 +356,7 @@
       <End Role="Eval" EntitySet="Evals" />
     </AssociationSet>
     <EntitySet Name="Templeates" EntityType="BiitDBNewModel.Templeate" />
+    <EntitySet Name="TemplateGraphs" EntityType="BiitDBNewModel.TemplateGraph" />
   </EntityContainer>
   <EntityType Name="Eval">
     <Key>
@@ -391,5 +392,15 @@
     <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="QuestionName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Semester" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TemplateGraph">
+    <Key>
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeacherName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CourseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SemesterNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TempleteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

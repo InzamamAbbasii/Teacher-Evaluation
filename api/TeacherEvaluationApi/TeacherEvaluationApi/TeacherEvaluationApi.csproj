@@ -16,7 +16,7 @@
     <AssemblyName>TeacherEvaluationApi</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44379</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
@@ -279,6 +279,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TeacherEvaluationModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\TemplateGraph.cs">
+      <DependentUpon>TeacherEvaluationModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Templeate.cs">
       <DependentUpon>TeacherEvaluationModel.tt</DependentUpon>
     </Compile>
@@ -405,7 +408,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57261</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44379/</IISUrl>
+          <IISUrl>http://localhost/TeacherEvaluationApi</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -264,5 +264,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TemplateGraphs">
+      <EntityTypeMapping TypeName="BiitDBNewModel.TemplateGraph">
+        <MappingFragment StoreEntitySet="TemplateGraph">
+          <ScalarProperty Name="TempleteName" ColumnName="TempleteName" />
+          <ScalarProperty Name="SemesterNo" ColumnName="SemesterNo" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

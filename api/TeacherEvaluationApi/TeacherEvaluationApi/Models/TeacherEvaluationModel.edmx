@@ -263,6 +263,16 @@ warning 6002: The table/view 'BiitDBNew.dbo.Log_In' does not have a primary key 
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="TemplateGraph">
+          <Key>
+            <PropertyRef Name="tid" />
+          </Key>
+          <Property Name="tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeacherName" Type="varchar(max)" />
+          <Property Name="CourseName" Type="varchar(max)" />
+          <Property Name="SemesterNo" Type="varchar(max)" />
+          <Property Name="TempleteName" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Templeates">
           <Key>
             <PropertyRef Name="QuestionID" />
@@ -360,6 +370,7 @@ warning 6002: The table/view 'BiitDBNew.dbo.Log_In' does not have a primary key 
           <EntitySet Name="SEMMTR" EntityType="Self.SEMMTR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STMTR" EntityType="Self.STMTR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TemplateGraph" EntityType="Self.TemplateGraph" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Templeates" EntityType="Self.Templeates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Log_In" EntityType="Self.Log_In" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -757,6 +768,7 @@ warning 6002: The table/view 'BiitDBNew.dbo.Log_In' does not have a primary key 
             <End Role="Eval" EntitySet="Evals" />
           </AssociationSet>
           <EntitySet Name="Templeates" EntityType="BiitDBNewModel.Templeate" />
+          <EntitySet Name="TemplateGraphs" EntityType="BiitDBNewModel.TemplateGraph" />
         </EntityContainer>
         <EntityType Name="Eval">
           <Key>
@@ -792,6 +804,16 @@ warning 6002: The table/view 'BiitDBNew.dbo.Log_In' does not have a primary key 
           <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="QuestionName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Semester" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TemplateGraph">
+          <Key>
+            <PropertyRef Name="tid" />
+          </Key>
+          <Property Name="tid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeacherName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CourseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SemesterNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TempleteName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1059,6 +1081,17 @@ warning 6002: The table/view 'BiitDBNew.dbo.Log_In' does not have a primary key 
                 <ScalarProperty Name="Semester" ColumnName="Semester" />
                 <ScalarProperty Name="QuestionName" ColumnName="QuestionName" />
                 <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TemplateGraphs">
+            <EntityTypeMapping TypeName="BiitDBNewModel.TemplateGraph">
+              <MappingFragment StoreEntitySet="TemplateGraph">
+                <ScalarProperty Name="TempleteName" ColumnName="TempleteName" />
+                <ScalarProperty Name="SemesterNo" ColumnName="SemesterNo" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="tid" ColumnName="tid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

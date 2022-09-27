@@ -10,14 +10,16 @@ import LoginScreen from './src/screens/AuthScreen/LoginScreen';
 import StudentCourses from './src/screens/Student/StudentCourses';
 import StudentEvaluation from './src/screens/Student/StudentEvaluation';
 //Admin screens
+import Dashboard from './src/screens/Admin/Dashboard';
 import AddTempleate from './src/screens/Admin/AddTempleate';
+import AddGraphTemplate from './src/screens/Admin/AddGraphTemplate';
 //Director Screen
 import TeacherPerformance from './src/screens/Director/TeacherPerformance';
 import TeacherRating from './src/screens/Director/TeacherRating';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  global.ip = '192.168.1.102';
+  global.ip = '192.168.1.103';
   return (
     <NavigationContainer>
       <StatusBar backgroundColor="#000" barStyle="light-content" />
@@ -45,6 +47,8 @@ const App = () => {
         <Stack.Screen name="StudentCourses" component={StudentCourses} />
         <Stack.Screen name="StudentEvaluation" component={StudentEvaluation} />
         <Stack.Screen name="AddTempleate" component={AddTempleate} />
+        <Stack.Screen name="AddGraphTemplate" component={AddGraphTemplate} />
+        <Stack.Screen name="Dashboard" component={Dashboard} />
       </Stack.Navigator>
     </NavigationContainer>
   );

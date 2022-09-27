@@ -25,6 +25,7 @@
         <EntityTypeShape EntityType="BiitDBNewModel.Eval" Width="1.5" PointX="11" PointY="1.5" />
         <AssociationConnector Association="BiitDBNewModel.FK_Eval_Question_Answer" />
         <EntityTypeShape EntityType="BiitDBNewModel.Templeate" Width="1.5" PointX="5.375" PointY="10.75" />
+        <EntityTypeShape EntityType="BiitDBNewModel.TemplateGraph" Width="1.5" PointX="11.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

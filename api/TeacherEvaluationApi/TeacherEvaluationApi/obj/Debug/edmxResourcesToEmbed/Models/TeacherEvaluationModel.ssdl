@@ -258,6 +258,16 @@ warning 6002: The table/view 'BiitDBNew.dbo.Log_In' does not have a primary key 
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="TemplateGraph">
+    <Key>
+      <PropertyRef Name="tid" />
+    </Key>
+    <Property Name="tid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TeacherName" Type="varchar(max)" />
+    <Property Name="CourseName" Type="varchar(max)" />
+    <Property Name="SemesterNo" Type="varchar(max)" />
+    <Property Name="TempleteName" Type="varchar(max)" />
+  </EntityType>
   <EntityType Name="Templeates">
     <Key>
       <PropertyRef Name="QuestionID" />
@@ -355,6 +365,7 @@ warning 6002: The table/view 'BiitDBNew.dbo.Log_In' does not have a primary key 
     <EntitySet Name="SEMMTR" EntityType="Self.SEMMTR" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="STMTR" EntityType="Self.STMTR" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TemplateGraph" EntityType="Self.TemplateGraph" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Templeates" EntityType="Self.Templeates" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Log_In" EntityType="Self.Log_In" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

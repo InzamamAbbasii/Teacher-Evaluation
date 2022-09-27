@@ -81,25 +81,25 @@ namespace TeacherEvaluationApi.Controllers
         }
 
 
-        //[HttpGet]
-        //public HttpResponseMessage GetQuestions()
-        //{
-        //    try
-        //    {
-        //        var questionList = db.Questions.Select(s => new
-        //        {
-        //            Question_ID = s.Question_ID,
-        //            Question1 = s.Question1,
-        //            Description = s.Description,
-        //        }).ToList(); ;
-        //        return Request.CreateResponse(HttpStatusCode.OK, questionList);               
+        [HttpGet]
+        public HttpResponseMessage GetQuestions()
+        {
+            try
+            {
+                var questionList = db.Questions.Select(s => new
+                {
+                    Question_ID = s.Question_ID,
+                    Question1 = s.Question1,
+                    Description = s.Description,
+                }).ToList(); ;
+                return Request.CreateResponse(HttpStatusCode.OK, questionList);
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
+            }
+        }
 
         [Route("api/student/GetCourses/{regno}/{year}")]
         [HttpGet]

@@ -29,6 +29,9 @@ const TeacherPerformance = ({navigation}) => {
   const [semesterList, setSemesterList] = useState([]);
   const [perfomanceData, setPerfomanceData] = useState([]);
   const [performanceBase, setPerformanceBase] = useState();
+
+  const [templateList, setTemplateList] = useState([]);
+  const [selectedTemplate, setSelectedTemplate] = useState('');
   useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       getData();
@@ -380,6 +383,114 @@ const TeacherPerformance = ({navigation}) => {
     );
   });
 
+  //---------------------------------------------------------------------------
+  useEffect(() => {
+    getAllTemplate();
+  }, []);
+
+  const getAllTemplate = () => {
+    var URL1 = `http://${ip}/TeacherEvaluationApi/api/admin/GetAllGraphTemplate`;
+    fetch(URL1, {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(response => {
+        setTemplateList(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+  const fetchPerformance1 = seletedTemplateArray => {
+    console.log({seletedTemplateArray});
+    const newData = seletedTemplateArray.map(item => {
+      return {
+        Emp_no: item.TeacherName,
+        Course_no: item.CourseName,
+        Semester_no: item.SemesterNo,
+      };
+    });
+    console.log('newData', newData);
+
+    setPerformanceBase([]);
+    let teachers = newData.map(item => item.Emp_no);
+    let courses = newData.map(item => item.Course_no);
+    let semester = newData.map(item => item.Semester_no);
+    let uniqueTeacher = [...new Set(teachers)];
+    let uniqueCourses = [...new Set(courses)];
+    let uniqueSemester = [...new Set(semester)];
+    if (uniqueTeacher.length > 1) {
+      uniqueTeacher.forEach(element => {
+        setPerformanceBase(data => [...data, getTeacherNameById(element)]);
+      });
+    } else if (uniqueCourses.length > 1) {
+      uniqueCourses.forEach(element => {
+        setPerformanceBase(data => [...data, getCourseNameById(element)]);
+      });
+    } else if (uniqueSemester.length > 1) setPerformanceBase(uniqueSemester);
+    else {
+      uniqueTeacher.forEach(element => {
+        console.log(getTeacherNameById(element));
+        setPerformanceBase(data => [...data, getTeacherNameById(element)]);
+      });
+    }
+    console.log(newData);
+    setPerfomanceData([]);
+
+    var headers = {
+      'Content-Type': 'application/json',
+    };
+    var InsertApiURL = `http://${ip}/TeacherEvaluationApi/api/Director/getAverage1`;
+    fetch(InsertApiURL, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(newData),
+    })
+      .then(response => {
+        if (response.status == 200) {
+          return response.json();
+        } else throw 'Something went wrong';
+      })
+      .then(response => {
+        console.log(response);
+        let notFound = false;
+        response.forEach((element, i) => {
+          console.log(i, element.length);
+          if (element.length == 0) notFound = true;
+          else notFound = false;
+        });
+
+        if (response.length > 0 && notFound == false) {
+          let arr = [];
+          let series_name = 'Series';
+          response.forEach((item, i) => {
+            arr = [];
+            series_name = series_name + i;
+            item.forEach(element => {
+              arr.push({x: element.Question_Desc, y: element.AverageMarks});
+            });
+            if (arr.length > 0) {
+              let obj = {
+                seriesName: series_name,
+                data: arr,
+                color: getRandomColor(),
+              };
+              setPerfomanceData(data => [...data, obj]);
+            } else {
+              let message = 'No Record found for Employee ' + (i + 1);
+              ToastAndroid.show(message, ToastAndroid.SHORT);
+            }
+          });
+        } else {
+          alert('No Record Found');
+        }
+      })
+      .catch(error => {
+        alert(error);
+      })
+      .finally(() => setLoading(false));
+  };
+  //---------------------------------------------------------------------------
   return (
     <ScrollView style={{flex: 1}}>
       {loading ? (
@@ -395,8 +506,35 @@ const TeacherPerformance = ({navigation}) => {
             alignItems: 'center',
             marginBottom: 40,
           }}>
-          <View style={{padding: 4}}>{newArray}</View>
-          <View
+          <View style={style.cardItem}>
+            <Text style={style.cardText}>Template{'  '}</Text>
+            <View style={{...style.dropdownContainer, flex: 1}}>
+              <Picker
+                style={style.picker}
+                selectedValue={selectedTemplate}
+                onValueChange={value => {
+                  value != 'Select' && fetchPerformance1(value.item);
+                  setSelectedTemplate(value);
+                }}
+                mode={'dropdown'}>
+                <Picker.Item label={'Select Teacher'} value={'Select'} />
+                {templateList.map((item, index) => {
+                  // console.log(item);
+                  return (
+                    <Picker.Item label={item.Key} value={item} key={index} />
+                  );
+                })}
+              </Picker>
+            </View>
+          </View>
+
+          {/* <TouchableOpacity
+            style={{...style.btn, width: 180, marginTop: 20}}
+            onPress={() => fetchPerformance()}>
+            <Text style={style.btnText}>Get Performance</Text>
+          </TouchableOpacity> */}
+          {/* <View style={{padding: 4}}>{newArray}</View> */}
+          {/* <View
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
@@ -425,7 +563,7 @@ const TeacherPerformance = ({navigation}) => {
               color="#000"
               onPress={() => addMore()}
             />
-          </View>
+          </View> */}
 
           <View
             style={{
